@@ -6,9 +6,9 @@ const getTasks = async(req,res) => {
 try {
 
 
-const tasks = await Task.find({userID: req.user.id});
+    const tasks = await Task.find({userID: req.user.id});
 
-res.json(tasks);
+    res.json(tasks);
 
 } catch (error) {
 
@@ -18,9 +18,9 @@ res.status(500).json({message:error.message});
 }
 };
 
-//Add Task Function
+//Add Task Function **
 const addTask = async(req,res)=>{
-const{title, description, deadline} = req.body;
+const {title, description, deadline} = req.body;
 try{
 const task = await Task.create({userId:req.user.id,title,description,deadline});
 res.status(201).json({message:error.message});
@@ -47,7 +47,7 @@ try{
 }
 };
 
-//Delete Task
+//Delete Task **
 const deleteTask = async(req,res) => {
     try {
         const task = await Task.findById(req.params.id);
